@@ -39,7 +39,7 @@ function writeHFile(){
 }
 
 function createFile(){
-	
+	echo 'createFile'
 }
 
 if [[ ! -d 'shell' ]]; 
