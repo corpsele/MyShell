@@ -40,23 +40,34 @@ function writeHFile(){
 
 function createFile(){
 	echo 'createFile'
+	if [[ ! -d 'shell' ]]; 
+	then
+		#statements
+		echo $dir'文件夹不存在, 正在创建...'
+		sudo mkdir shell
+		# echo '创建完成'
+		if [[ -d 'shell' ]]; 
+		then
+		#statements
+		   echo '创建成功'
+		   writeHFile
+	    else
+		   echo '创建失败'
+	    fi
+	else
+	   writeHFile
+	fi
 }
 
-if [[ ! -d 'shell' ]]; 
-then
-	#statements
-	echo $dir'文件夹不存在, 正在创建...'
-	sudo mkdir shell
-	# echo '创建完成'
-	if [[ -d 'shell' ]]; 
-	then
-	#statements
-	   echo '创建成功'
-	   writeHFile
-    else
-	   echo '创建失败'
-    fi
-else
-   writeHFile
-fi
+echo 'choose ur way'
+echo '1: Create MVVM Files With OC'
+read index
+
+case $index in
+	1 )
+    createFile
+		;;
+esac
+
+
 
