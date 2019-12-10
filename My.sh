@@ -181,12 +181,27 @@ function createClass(){
 function createCodes(){
 	echo 'Choose your Code'
 	echo '1:Corner'
+	echo '2:Color With Hex For OC'
 	read index
 	case $index in
 		1)
           createCodeForCorner
         ;;
+        2)
+          createCodeForColor
+        ;;
 	esac 
+}
+
+function createCodeForColor(){
+	code1="+ (UIColor *)colorWithHex:(UInt32)hex andAlpha:(CGFloat)alpha{\n
+     return [UIColor colorWithRed:((hex >> 16) & 0xFF)/255.0
+                           green:((hex >> 8) & 0xFF)/255.0
+                            blue:(hex & 0xFF)/255.0
+                           alpha:alpha];\n}"
+	echo '--code begin--'
+    echo $code1
+	echo '--code end--'
 }
 
 function createCodeForCorner(){
@@ -212,10 +227,54 @@ function createCodeForCorner(){
     echo '--code end--'
 }
 
+function chooseFiles(){
+	echo "Choose Type..."
+	echo '1: OC'
+	echo '2: Swift'
+	read index
+	case $index in
+		1)
+         formatOC
+        ;;
+        2)
+         formatSwift
+        ;;
+	esac
+}
+
+function formatOC(){
+    echo 'formatOC'
+    output=$(ls)
+    # echo $output
+    arr=(`echo $output | tr ',' ' '`)
+    for i in "${!arr[@]}"; do
+      echo "$i: ${arr[i]}"
+    done
+    echo 'Please select file ...'
+    read index
+    clang=$(ClangFormaterObjC/format-objc-file.sh ${arr[index]})
+    echo $clang
+}
+
+function formatSwift(){
+    echo 'formatSwift'
+    output=$(ls)
+    # echo $output
+    arr=(`echo $output | tr ',' ' '`)
+    for i in "${!arr[@]}"; do
+      echo "$i: ${arr[i]}"
+    done
+    echo 'Please select file ...'
+    read index
+    clang=$(swiftformat ${arr[index]})
+    echo $clang
+}
+
 echo 'choose ur way'
 echo '1: Create MVVM Files With OC'
 echo '2: Create Class File With OC'
 echo '3: Create Codes'
+echo '4: Choose File For Format'
 read index
 
 case $index in
@@ -227,6 +286,9 @@ case $index in
     ;;
     3)
       createCodes
+    ;;
+    4)
+      chooseFiles
     ;;
 esac
 
