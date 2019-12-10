@@ -1,3 +1,8 @@
+. table.sh
+
+
+
+
 dir="shell"
 glocalname=""
 
