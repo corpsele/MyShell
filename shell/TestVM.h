@@ -2,7 +2,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface Test : UIView
+@interface TestVM : NSObject
 
 
 @end
