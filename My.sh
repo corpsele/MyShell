@@ -256,6 +256,11 @@ function formatOC(){
     echo $clang
 }
 
+function delDeviceData(){
+	cmd1=$(rm -r -f /Users/eport2/Library/Developer/Xcode/DerivedData)
+	echo $cmd1
+}
+
 function formatSwift(){
     echo 'formatSwift'
     output=$(ls)
@@ -275,6 +280,7 @@ echo '1: Create MVVM Files With OC'
 echo '2: Create Class File With OC'
 echo '3: Create Codes'
 echo '4: Choose File For Format'
+echo '5: Del DeviceData Folder'
 read index
 
 case $index in
@@ -289,6 +295,9 @@ case $index in
     ;;
     4)
       chooseFiles
+    ;;
+    5)
+      delDeviceData
     ;;
 esac
 
