@@ -259,6 +259,9 @@ function formatOC(){
 function delDeviceData(){
 	cmd1=$(rm -r -f /Users/eport2/Library/Developer/Xcode/DerivedData)
 	echo $cmd1
+	if [[ $cmd1 == "" ]]; then
+		echo 'DeviceData清理完成'
+	fi
 }
 
 function formatSwift(){
