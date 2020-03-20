@@ -258,7 +258,7 @@ function createCodeForiPhoneXSwift() {
             }"
     code3="static func toolBarHeight() -> CGFloat {\n
                   return 49 + safeAreaBottom()\n
-            {"
+            }"
     code4="static func navigationHeight() -> CGFloat {\n
                return 44 + safeAreaTop()\n
            }"
@@ -342,6 +342,51 @@ function delDeviceData() {
     fi
 }
 
+function aesCrypt() {
+    Console1
+    return
+    #!/bin/bash
+    echo 'Input String for Crypt'
+    read str
+    source_str=str
+    echo '1: Encrypt'
+    echo '2: deCrypt'
+    read index
+    case $index in
+    1)
+        aesEncrypt
+        ;;
+    2)
+        aesDecrypt
+        ;;
+    esac
+
+    key=$(openssl rand -base64 32 | md5)
+    iv=$(openssl rand -base64 32 | md5)
+
+    # encrypt_str=$(echo "${source_str}" | openssl enc -e -aes-256-cbc -a -K ${key} -iv ${iv} -nosalt)
+    # echo ${encrypt_str}
+
+    # decrypt_str=$(echo "${encrypt_str}" | openssl enc -e -aes-256-cbc -a -K ${key} -iv ${iv} -nosalt -d)
+    # echo ${decrypt_str}
+}
+
+function aesEncrypt() {
+    key=$(openssl rand -base64 32 | md5)
+    iv=$(openssl rand -base64 32 | md5)
+
+    encrypt_str=$(echo "${str}" | openssl enc -e -aes-256-cbc -a -K ${key} -iv ${iv} -nosalt)
+    echo ${encrypt_str}
+}
+
+function aesDecrypt() {
+    key=$(openssl rand -base64 32 | md5)
+    iv=$(openssl rand -base64 32 | md5)
+
+    decrypt_str=$(echo "${str}" | openssl enc -e -aes-256-cbc -a -K ${key} -iv ${iv} -nosalt -d)
+    echo ${decrypt_str}
+}
+
 function formatSwift() {
     echo 'formatSwift'
     output=$(ls)
@@ -362,6 +407,7 @@ echo '2: Create Class File With OC'
 echo '3: Create Codes'
 echo '4: Choose File For Format'
 echo '5: Del DeviceData Folder'
+echo '6: AES En/Decrypt'
 read index
 
 case $index in
@@ -379,5 +425,8 @@ case $index in
     ;;
 5)
     delDeviceData
+    ;;
+6)
+    aesCrypt
     ;;
 esac
