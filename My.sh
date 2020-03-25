@@ -343,6 +343,8 @@ function delDeviceData() {
 }
 
 function aesCrypt() {
+    open ~/Documents/CodeProduceSwift.app
+    return
     Console1
     return
     #!/bin/bash
