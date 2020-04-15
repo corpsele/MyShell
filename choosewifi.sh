@@ -7,6 +7,7 @@ echo '3.1103'
 echo '4.关闭dns'
 echo '5.SHUNYI1'
 echo '6.SHUNYI2'
+echo '7.nordvpn(SHUNYI1+ & norddns)'
 
 read index
 
@@ -40,6 +41,11 @@ sudo networksetup -setairportnetwork en0 TP-SHUNYI2 TP-SHUNYI2
 sudo networksetup -setdnsservers Wi-Fi empty
 echo '切换完成'
     ;;
+    7)  echo '正在切换NordVPN...'
+sudo networksetup -setairportnetwork en0 TP-SHUNYI1 TP-SHUNYI1
+sudo networksetup -setdnsservers Wi-Fi 103.86.96.100 103.86.99.100
+echo '切换完成'
+    ;; 
     *)  echo '输入不正确'
     ;;
 esac
