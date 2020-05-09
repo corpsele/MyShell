@@ -407,6 +407,10 @@ function openBaiduFolder() {
     open /Users/eport2/Downloads/464505287_corpsele
 }
 
+function openDesktopRecordFolder {
+    open "/Users/eport2/Documents/Snagit/Autosaved Captures.localized"
+}
+
 echo 'choose ur way'
 echo '1: Create MVVM Files With OC'
 echo '2: Create Class File With OC'
@@ -415,6 +419,7 @@ echo '4: Choose File For Format'
 echo '5: Del DeviceData Folder'
 echo '6: AES En/Decrypt'
 echo '7: Open BaiduPan Downloads Folder'
+echo '8: Open Desktop Record Folder'
 read index
 
 case $index in
@@ -438,5 +443,8 @@ case $index in
     ;;
 7)
     openBaiduFolder
+    ;;
+8)
+    openDesktopRecordFolder
     ;;
 esac
