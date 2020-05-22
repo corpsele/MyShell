@@ -10,6 +10,8 @@ echo '6.SHUNYI2'
 echo '7.nordvpn(SHUNYI1+ & norddns)'
 echo '8.Set DNS to 192.168.0.101'
 echo '9.Set DNS to NordVPN'
+echo '0.TP-LINK_357636'
+echo '11.A1112'
 
 read index
 
@@ -56,6 +58,14 @@ echo '切换完成'
 sudo networksetup -setdnsservers Wi-Fi 103.86.96.100 103.86.99.100
 echo '切换完成'
     ;; 
+    0)  echo '正在切换 TP-LINK_357636'
+sudo networksetup -setairportnetwork en0 TP-LINK_357636 shunyin1113
+echo '切换完成'
+    ;;
+    11) echo '正在切换 A1112'
+    sudo networksetup -setairportnetwork en0 A1112 '1qaz2wsx!@'
+echo '切换完成'
+    ;;
     *)  echo '输入不正确'
     ;;
 esac
