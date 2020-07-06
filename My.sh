@@ -407,8 +407,31 @@ function openBaiduFolder() {
     open /Users/eport2/Downloads/464505287_corpsele
 }
 
-function openDesktopRecordFolder {
+function openDesktopRecordFolder() {
     open "/Users/eport2/Documents/Snagit/Autosaved Captures.localized"
+}
+
+function setGitConfigInfo() {
+    echo 'what for ?'
+    echo '1: Personal'
+    echo '2: SingleWindow'
+    read waynum
+    case $waynum in
+    1)
+        cmd1=$(git config --global user.name 'corpsele')
+        echo $cmd1
+        if [[ $cmd1 == "" ]]; then
+            echo "Done!"
+        fi
+        ;;
+    2)
+        cmd1=$(git config --global user.name 'lihaipeng')
+        echo $cmd1
+        if [[ $cmd1 == "" ]]; then
+            echo "Done!"
+        fi
+        ;;
+    esac
 }
 
 echo 'choose ur way'
@@ -420,6 +443,7 @@ echo '5: Del DeviceData Folder'
 echo '6: AES En/Decrypt'
 echo '7: Open BaiduPan Downloads Folder'
 echo '8: Open Desktop Record Folder'
+echo '9: Set Git Config Info'
 read index
 
 case $index in
@@ -446,5 +470,8 @@ case $index in
     ;;
 8)
     openDesktopRecordFolder
+    ;;
+9)
+    setGitConfigInfo
     ;;
 esac
