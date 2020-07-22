@@ -14,6 +14,7 @@ echo '0.TP-LINK_357636'
 echo '11.A1112'
 echo '12.Set DNS to 8.8.8.8'
 echo '13.Set DNS to 114.114.114.114'
+echo '14.Set DNS to NordVPN'
 
 read index
 
@@ -75,6 +76,10 @@ echo '切换完成'
     13)  echo '正在设置dns...'
 sudo networksetup -setdnsservers Wi-Fi 114.114.114.114
 echo '切换完成'
+    ;;
+    14)  echo '正在设置dns...'
+    sudo networksetup -setdnsservers Wi-Fi 103.86.96.100 103.86.99.100
+    echo '设置完成'
     ;;
     *)  echo '输入不正确'
     ;;
