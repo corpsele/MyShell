@@ -22,12 +22,12 @@ read index
 case $index in
     1)  echo '正在切换顺义1...'
 sudo networksetup -setairportnetwork en0 TP-SHUNYI1 TP-SHUNYI1
-sudo networksetup -setdnsservers Wi-Fi 192.168.0.101
+sudo networksetup -setdnsservers Wi-Fi 172.17.64.172 114.114.114.114
 echo '切换完成'
     ;;
     2)  echo '正在切换顺义2...'
 sudo networksetup -setairportnetwork en0 TP-SHUNYI2 TP-SHUNYI2
-sudo networksetup -setdnsservers Wi-Fi 192.168.0.101
+sudo networksetup -setdnsservers Wi-Fi 172.17.64.172 114.114.114.114
 echo '切换完成'
     ;;
     3)  echo '正在切换1103...'
@@ -55,7 +55,7 @@ sudo networksetup -setdnsservers Wi-Fi 103.86.96.100 103.86.99.100
 echo '切换完成'
     ;; 
     8)  echo '正在设置dns...'
-sudo networksetup -setdnsservers Wi-Fi 192.168.0.101
+sudo networksetup -setdnsservers Wi-Fi 172.17.64.172 114.114.114.114
 echo '切换完成'
     ;; 
     9)  echo '正在设置dns...'
@@ -68,6 +68,7 @@ echo '切换完成'
     ;;
     11) echo '正在切换 A1112'
     sudo networksetup -setairportnetwork en0 A1112 '1qaz2wsx!@'
+    sudo networksetup -setdnsservers Wi-Fi empty
 echo '切换完成'
     ;;
     12)  echo '正在设置dns...'
@@ -84,7 +85,7 @@ echo '切换完成'
     # ;;
     14)  echo '正在切换 357636 + DNS ...'
     sudo networksetup -setairportnetwork en0 TP-LINK_357636 shunyi1113
-    sudo networksetup -setdnsservers Wi-Fi 192.168.0.101
+    sudo networksetup -setdnsservers Wi-Fi 172.17.64.172 114.114.114.114
     echo '切换完成'
     ;;
     *)  echo '输入不正确'
