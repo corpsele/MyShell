@@ -8,7 +8,7 @@ echo '4.关闭dns'
 echo '5.SHUNYI1'
 echo '6.SHUNYI2'
 echo '7.nordvpn(SHUNYI1+ & norddns)'
-echo '8.Set DNS to 192.168.0.101'
+echo '8.Set DNS to 172.17.64.172'
 echo '9.Set DNS to NordVPN'
 echo '0.TP-LINK_357636'
 echo '11.A1112'
@@ -16,6 +16,7 @@ echo '12.Set DNS to 8.8.8.8'
 echo '13.Set DNS to 114.114.114.114'
 # echo '14.Set DNS to NordVPN'
 echo '14.Set 357636 + DNS'
+echo '15.Set DNS to 202.106.0.20'
 
 read index
 
@@ -55,7 +56,7 @@ sudo networksetup -setdnsservers Wi-Fi 103.86.96.100 103.86.99.100
 echo '切换完成'
     ;; 
     8)  echo '正在设置dns...'
-sudo networksetup -setdnsservers Wi-Fi 172.17.64.172
+sudo networksetup -setdnsservers Wi-Fi 172.17.64.172 202.106.0.20
 echo '切换完成'
     ;; 
     9)  echo '正在设置dns...'
@@ -85,7 +86,11 @@ echo '切换完成'
     # ;;
     14)  echo '正在切换 357636 + DNS ...'
     sudo networksetup -setairportnetwork en0 TP-LINK_357636 shunyi1113
-    sudo networksetup -setdnsservers Wi-Fi 172.17.64.172
+    sudo networksetup -setdnsservers Wi-Fi 172.17.64.172 202.106.0.20
+    echo '切换完成'
+    ;;
+    15)  echo '正在设置dns...'
+    sudo networksetup -setdnsservers Wi-Fi 202.106.0.20
     echo '切换完成'
     ;;
     *)  echo '输入不正确'

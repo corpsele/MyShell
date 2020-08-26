@@ -434,6 +434,15 @@ function setGitConfigInfo() {
     esac
 }
 
+function sm4Crypt() {
+    cmd1=$(java -jar /Users/eport2/Documents/SM4Maven.jar)
+    echo $cmd1
+        if [[ $cmd1 == "" ]]; then
+            echo "Done!"
+        fi
+        
+}
+
 echo 'choose ur way'
 echo '1: Create MVVM Files With OC'
 echo '2: Create Class File With OC'
@@ -444,6 +453,7 @@ echo '6: AES En/Decrypt'
 echo '7: Open BaiduPan Downloads Folder'
 echo '8: Open Desktop Record Folder'
 echo '9: Set Git Config Info'
+echo '10: SM4 En/Decrypt'
 read index
 
 case $index in
@@ -473,5 +483,8 @@ case $index in
     ;;
 9)
     setGitConfigInfo
+    ;;
+    10)
+    sm4Crypt
     ;;
 esac
