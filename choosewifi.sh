@@ -17,6 +17,8 @@ echo '13.Set DNS to 114.114.114.114'
 # echo '14.Set DNS to NordVPN'
 echo '14.Set 357636 + DNS'
 echo '15.Set DNS to 202.106.0.20'
+echo '16.Set Wire DNS'
+echo '17.Close Wire DNS'
 
 read index
 
@@ -92,6 +94,14 @@ echo '切换完成'
     15)  echo '正在设置dns...'
     sudo networksetup -setdnsservers Wi-Fi 202.106.0.20
     echo '切换完成'
+    ;;
+    16)  echo '正在设置有线dns...'
+    sudo networksetup -setdnsservers 'Thunderbolt Ethernet' 172.17.64.172 202.106.0.20
+    echo '切换完成'
+    ;;
+    17)  echo '正在关闭有线dns...'
+    sudo networksetup -setdnsservers 'Thunderbolt Ethernet' empty
+    echo '关闭完成'
     ;;
     *)  echo '输入不正确'
     ;;
