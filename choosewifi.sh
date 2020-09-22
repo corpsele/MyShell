@@ -19,6 +19,9 @@ echo '14.Set 357636 + DNS'
 echo '15.Set DNS to 202.106.0.20'
 echo '16.Set Wire DNS'
 echo '17.Close Wire DNS'
+echo '18.Set USB Ether DNS'
+echo '19.Close USB Ether DNS'
+echo '20.Change USB Ether MAC Address'
 
 read index
 
@@ -102,6 +105,19 @@ echo '切换完成'
     17)  echo '正在关闭有线dns...'
     sudo networksetup -setdnsservers 'Thunderbolt Ethernet' empty
     echo '关闭完成'
+    ;;
+    18) echo '正在设置usb网卡dns...'
+    sudo networksetup -setdnsservers 'USB Ethernet' 172.17.64.172 202.106.0.20
+    echo '切换完成'
+    ;;
+    19) echo '关闭usb网卡dns...'
+    sudo networksetup -setdnsservers 'USB Ethernet' empty
+    echo '关闭完成'
+    ;;
+    20) echo '修改usb网卡mac地址...'
+    sudo /sbin/ifconfig en9 ether 38:c9:86:43:35:fe
+    networksetup -detectnewhardware
+    echo '修改完成'
     ;;
     *)  echo '输入不正确'
     ;;
