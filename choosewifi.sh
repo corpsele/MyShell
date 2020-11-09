@@ -134,6 +134,7 @@ echo '切换完成'
     ;;
     23) echo 'Set Default DHCP'
     sudo networksetup -setdhcp 'USB Ethernet' empty
+    sudo networksetup -setdnsservers 'USB Ethernet' empty
     echo 'done'
     ;;
     *)  echo '输入不正确'
