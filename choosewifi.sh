@@ -22,6 +22,9 @@ echo '17.Close Wire DNS'
 echo '18.Set USB Ether DNS'
 echo '19.Close USB Ether DNS'
 echo '20.Change USB Ether MAC Address'
+echo '21.Change group to shunyi ip'
+echo '22.Set Default 20201109'
+echo '23.Set Default DHCP'
 
 read index
 
@@ -118,6 +121,20 @@ echo '切换完成'
     sudo /sbin/ifconfig en9 ether 38:c9:86:43:35:fe
     networksetup -detectnewhardware
     echo '修改完成'
+    ;;
+    21) echo 'change group to shunyi ip'
+    sudo networksetup -setmanual 'USB Ethernet' 10.99.213.205 255.255.255.0 10.99.213.250
+    sudo networksetup -setdnsservers 'USB Ethernet' 10.99.101.11 10.99.101.101 10.99.101.102
+    echo 'done'
+    ;;
+    22) echo 'Set Default'
+    sudo networksetup -setmanual 'USB Ethernet' 172.17.7.6 255.255.255.0 172.17.7.254
+    sudo networksetup -setdnsservers 'USB Ethernet' 172.17.64.172
+    echo 'done'
+    ;;
+    23) echo 'Set Default DHCP'
+    sudo networksetup -setdhcp 'USB Ethernet' empty
+    echo 'done'
     ;;
     *)  echo '输入不正确'
     ;;
