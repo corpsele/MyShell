@@ -443,6 +443,14 @@ function sm4Crypt() {
         
 }
 
+function startAria2c()
+{
+    cmd1=$(aria2c /etc/aria2/aria2.conf -D)
+    cmd2=$(aria2c --enable-rpc --rpc-listen-all)
+    echo $cmd1
+    echo $cmd2
+}
+
 echo 'choose ur way'
 echo '1: Create MVVM Files With OC'
 echo '2: Create Class File With OC'
@@ -454,6 +462,7 @@ echo '7: Open BaiduPan Downloads Folder'
 echo '8: Open Desktop Record Folder'
 echo '9: Set Git Config Info'
 echo '10: SM4 En/Decrypt'
+echo '11: Start Aria2c'
 read index
 
 case $index in
@@ -486,5 +495,8 @@ case $index in
     ;;
     10)
     sm4Crypt
+    ;;
+    11)
+    startAria2c
     ;;
 esac

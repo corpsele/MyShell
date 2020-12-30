@@ -129,7 +129,7 @@ echo '切换完成'
     ;;
     22) echo 'Set Default'
     sudo networksetup -setmanual 'USB Ethernet' 172.17.7.6 255.255.255.0 172.17.7.254
-    sudo networksetup -setdnsservers 'USB Ethernet' 172.17.64.172
+    sudo networksetup -setdnsservers 'USB Ethernet' 172.17.64.172 114.114.114.114
     echo 'done'
     ;;
     23) echo 'Set Default DHCP'
