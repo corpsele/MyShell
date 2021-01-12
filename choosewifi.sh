@@ -25,6 +25,8 @@ echo '20.Change USB Ether MAC Address'
 echo '21.Change group to shunyi ip'
 echo '22.Set Default 20201109'
 echo '23.Set Default DHCP'
+echo '24.Open/Close Wifi'
+echo '25.Set USB Ethernet Proxy for Developer'
 
 read index
 
@@ -136,6 +138,27 @@ echo '切换完成'
     sudo networksetup -setdhcp 'USB Ethernet' empty
     sudo networksetup -setdnsservers 'USB Ethernet' empty
     echo 'done'
+    ;;
+    24) echo 'Open/Close Wifi'
+        echo "1.Open Wifi"
+        echo "2.Close Wifi"
+        read flag
+        case $flag in 
+        1) echo "Open Wifi"
+        sudo networksetup -setairportpower Wi-Fi on
+        echo "Open Successed"
+        ;;
+        2) echo "Close Wifi"
+        sudo networksetup -setairportpower Wi-Fi off
+        echo "Close Successed"
+        ;;
+        esac
+    ;;
+    25) echo 'Set USB Ethernet Proxy for Developer'
+    sudo networksetup -setwebproxy 'USB Ethernet' 172.17.32.196 3128
+    sudo networksetup -setsecurewebproxy 'USB Ethernet' 172.17.32.196 3128
+    sudo networksetup -setproxybypassdomains 'USB Ethernet' 'agentzshg.test.chinaport.gov.cn' 'emmzshg.test.chinaport.gov.cn' 'mazshg.test.chinaport.gov.cn' 'impush.test.chinaport.gov.cn' 'msstest.chinaport.gov.cn' 'apptest.singlewindow.cn'
+    echo 'Set Successed'
     ;;
     *)  echo '输入不正确'
     ;;
