@@ -28,6 +28,8 @@ echo '23.Set Default DHCP'
 echo '24.Open/Close Wifi'
 echo '25.Set USB Ethernet Proxy for Developer'
 echo '26.Open/Close Discovery Proxy'
+echo '27.Open/Close USB Ethernet'
+echo '28.Set USB Ethernet Proxy for Empty'
 
 read index
 
@@ -157,7 +159,9 @@ echo '切换完成'
     ;;
     25) echo 'Set USB Ethernet Proxy for Developer'
     sudo networksetup -setwebproxy 'USB Ethernet' 172.17.32.196 3128
+    sudo networksetup -setwebproxystate 'USB Ethernet' on
     sudo networksetup -setsecurewebproxy 'USB Ethernet' 172.17.32.196 3128
+    sudo networksetup -setsecurewebproxystate 'USB Ethernet' on
     sudo networksetup -setproxybypassdomains 'USB Ethernet' 'agentzshg.test.chinaport.gov.cn' 'emmzshg.test.chinaport.gov.cn' 'mazshg.test.chinaport.gov.cn' 'impush.test.chinaport.gov.cn' 'msstest.chinaport.gov.cn' 'apptest.singlewindow.cn'
     sudo networksetup -setdnsservers 'USB Ethernet' 172.17.64.172
     echo 'Set Successed'
@@ -176,6 +180,29 @@ echo '切换完成'
     echo 'Close Successed'
     ;;
     esac
+    ;;
+    27) echo 'Open/Close USB Ethernet'
+    echo '1.Open USB Ethernet'
+    echo '2.Close USB Ethernet'
+    read flag
+    case $flag in
+    1) echo 'Open USB Ethernet'
+    sudo networksetup -setairportpower 'USB Ethernet' on
+    ;;
+    2) echo 'Close USB Ethernet'
+    sudo networksetup -setairportpower 'USB Ethernet' off
+    ;;
+    esac
+    ;;
+    28) echo 'Set USB Ethernet Proxy for Empty'
+    sudo networksetup -setwebproxy 'USB Ethernet' empty
+    sudo networksetup -setwebproxystate 'USB Ethernet' off
+    sudo networksetup -setsecurewebproxy 'USB Ethernet' empty
+    sudo networksetup -setsecurewebproxystate 'USB Ethernet' off
+    sudo networksetup -setproxybypassdomains 'USB Ethernet' ''
+    sudo networksetup -setdnsservers 'USB Ethernet' empty
+    sudo networksetup -setproxyautodiscovery 'USB Ethernet' off
+    echo 'Set Successed'
     ;;
     *)  echo '输入不正确'
     ;;
