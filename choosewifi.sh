@@ -27,6 +27,7 @@ echo '22.Set Default 20201109'
 echo '23.Set Default DHCP'
 echo '24.Open/Close Wifi'
 echo '25.Set USB Ethernet Proxy for Developer'
+echo '26.Open/Close Discovery Proxy'
 
 read index
 
@@ -158,7 +159,23 @@ echo '切换完成'
     sudo networksetup -setwebproxy 'USB Ethernet' 172.17.32.196 3128
     sudo networksetup -setsecurewebproxy 'USB Ethernet' 172.17.32.196 3128
     sudo networksetup -setproxybypassdomains 'USB Ethernet' 'agentzshg.test.chinaport.gov.cn' 'emmzshg.test.chinaport.gov.cn' 'mazshg.test.chinaport.gov.cn' 'impush.test.chinaport.gov.cn' 'msstest.chinaport.gov.cn' 'apptest.singlewindow.cn'
+    sudo networksetup -setdnsservers 'USB Ethernet' 172.17.64.172
     echo 'Set Successed'
+    ;;
+    26) echo 'Open/Close Discovery Proxy'
+    echo 'Open Discovery Proxy'
+    echo 'Close Discovery Proxy'
+    read flag
+    case $flag in 
+    1) echo 'Open Discovery Proxy'
+    sudo networksetup -setproxyautodiscovery 'USB Ethernet' on
+    echo 'Open Successed'
+    ;;
+    2) echo 'Close Discovery Proxy'
+    sudo networksetup -setproxyautodiscovery 'USB Ethernet' off
+    echo 'Close Successed'
+    ;;
+    esac
     ;;
     *)  echo '输入不正确'
     ;;
