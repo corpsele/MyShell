@@ -451,6 +451,16 @@ function startAria2c()
     echo $cmd2
 }
 
+function startMySql(){
+    cmd1=$(mysql.server start)
+    echo $cmd1
+}
+
+function stopMySql(){
+    cmd1=$(mysql.server stop)
+    echo $cmd1
+}
+
 echo 'choose ur way'
 echo '1: Create MVVM Files With OC'
 echo '2: Create Class File With OC'
@@ -463,6 +473,8 @@ echo '8: Open Desktop Record Folder'
 echo '9: Set Git Config Info'
 echo '10: SM4 En/Decrypt'
 echo '11: Start Aria2c'
+echo '12: Start Mysql (u:root p:root)'
+echo '13: Stop Mysql'
 read index
 
 case $index in
@@ -498,5 +510,11 @@ case $index in
     ;;
     11)
     startAria2c
+    ;;
+    12)
+    startMySql
+    ;;
+    13)
+    stopMySql
     ;;
 esac
