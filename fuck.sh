@@ -10,6 +10,8 @@ IPA_DIR="/Users/${USER_DIR}/Downloads/zshg_ios 2021-02-02 09-01-48"
 IPA_TEMP_DIR="/Users/${USER_DIR}/Downloads/ipa"
 ##读取版本号
 APP_VER=""
+##最终文件名
+APP_FILE_NAME=""
 
 function checkTmpDir(){
 ##删除临时目录
@@ -57,6 +59,7 @@ loadVer(){
 ##重命名文件
 renameFileName(){
 	cp "${IPA_DIR}/${IPA_FILE}" "${IPA_TEMP_DIR}/zshg_ios-${APP_VER}.ipa"
+	APP_FILE_NAME="zshg_ios-${APP_VER}.ipa"
 }
 
 

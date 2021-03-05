@@ -342,6 +342,11 @@ function delDeviceData() {
     fi
 }
 
+function openDeviceData() {
+    cmd1=$(open /Users/eport2/Library/Developer/Xcode/DerivedData)
+    echo $cmd1
+}
+
 function aesCrypt() {
     open ~/Documents/CodeProduceSwift.app
     return
@@ -475,6 +480,7 @@ echo '10: SM4 En/Decrypt'
 echo '11: Start Aria2c'
 echo '12: Start Mysql (u:root p:root)'
 echo '13: Stop Mysql'
+echo '14: Open Device Folder'
 read index
 
 case $index in
@@ -516,5 +522,8 @@ case $index in
     ;;
     13)
     stopMySql
+    ;;
+    14)
+    openDeviceData
     ;;
 esac

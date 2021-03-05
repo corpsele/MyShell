@@ -31,6 +31,7 @@ echo '26.Open/Close Discovery Proxy'
 echo '27.Open/Close USB Ethernet'
 echo '28.Set USB Ethernet Proxy for Empty'
 echo '29.Set Wifi to CL'
+echo '30.Close Wifi And WLan Proxy'
 
 read index
 
@@ -159,7 +160,7 @@ echo '切换完成'
         esac
     ;;
     25) echo 'Set USB Ethernet Proxy for Developer'
-    sudo networksetup -setmanual 'USB Ethernet' 172.17.7.226
+    sudo networksetup -setmanual 'USB Ethernet' 172.17.7.226 255.255.255.0 172.17.7.254
     sudo networksetup -setwebproxy 'USB Ethernet' 172.17.32.196 3128
     sudo networksetup -setwebproxystate 'USB Ethernet' on
     sudo networksetup -setsecurewebproxy 'USB Ethernet' 172.17.32.196 3128
@@ -208,6 +209,13 @@ echo '切换完成'
     ;;
     29) echo 'Set Wifi to CL'
     sudo networksetup -setairportnetwork en0 'C0rp5e f1Ve' 'Corpsele1986555'
+    ;;
+    30) echo 'Close Wifi And WLAN Proxy'
+    sudo networksetup -setwebproxystate 'USB Ethernet' off
+    sudo networksetup -setsecurewebproxystate 'USB Ethernet' off
+    sudo networksetup -setwebproxystate Wi-Fi off
+    sudo networksetup -setsecurewebproxystate Wi-Fi off
+    echo 'Close Susccess'
     ;;
     *)  echo '输入不正确'
     ;;
