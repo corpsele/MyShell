@@ -416,6 +416,16 @@ function openDesktopRecordFolder() {
     open "/Users/eport2/Documents/Snagit/Autosaved Captures.localized"
 }
 
+function createFramework() {
+    echo input framework 1
+    read f1
+    echo input framework 2
+    read f2
+    echo input out framework
+    read f3
+    cmd=$(lipo -create ${f1} ${f2} -output ${f3}) 
+}
+
 function setGitConfigInfo() {
     echo 'what for ?'
     echo '1: Personal'
@@ -481,6 +491,7 @@ echo '11: Start Aria2c'
 echo '12: Start Mysql (u:root p:root)'
 echo '13: Stop Mysql'
 echo '14: Open Device Folder'
+echo '15: Create Framework'
 read index
 
 case $index in
@@ -525,5 +536,8 @@ case $index in
     ;;
     14)
     openDeviceData
+    ;;
+    15)
+    createFramework
     ;;
 esac

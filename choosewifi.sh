@@ -32,6 +32,7 @@ echo '27.Open/Close USB Ethernet'
 echo '28.Set USB Ethernet Proxy for Empty'
 echo '29.Set Wifi to CL'
 echo '30.Close Wifi And WLan Proxy'
+echo '31.Close USB Ethernet IPV4'
 
 read index
 
@@ -165,7 +166,7 @@ echo '切换完成'
     sudo networksetup -setwebproxystate 'USB Ethernet' on
     sudo networksetup -setsecurewebproxy 'USB Ethernet' 172.17.32.196 3128
     sudo networksetup -setsecurewebproxystate 'USB Ethernet' on
-    sudo networksetup -setproxybypassdomains 'USB Ethernet' 'agentzshg.test.chinaport.gov.cn' 'emmzshg.test.chinaport.gov.cn' 'mazshg.test.chinaport.gov.cn' 'impush.test.chinaport.gov.cn' 'msstest.chinaport.gov.cn' 'apptest.singlewindow.cn' 'git.singlewindow.cn' 'wiki.singlewindow.cn' 'app.singlewindow.cn' 'swapp.singlewindow.cn' 'mail.eportdev.org' 'mss.chinaport.gov.cn' 'bamboo.singlewindow.cn' 'jira.singlewindow.cn'
+    sudo networksetup -setproxybypassdomains 'USB Ethernet' 'agentzshg.test.chinaport.gov.cn' 'emmzshg.test.chinaport.gov.cn' 'mazshg.test.chinaport.gov.cn' 'impush.test.chinaport.gov.cn' 'msstest.chinaport.gov.cn' 'apptest.singlewindow.cn' 'git.singlewindow.cn' 'wiki.singlewindow.cn' 'app.singlewindow.cn' 'swapp.singlewindow.cn' 'mail.eportdev.org' 'mss.chinaport.gov.cn' 'bamboo.singlewindow.cn' 'jira.singlewindow.cn' '172.17.65.144' '172.17.64.124'
     sudo networksetup -setdnsservers 'USB Ethernet' 172.17.64.172
     echo 'Set Successed'
     ;;
@@ -215,7 +216,11 @@ echo '切换完成'
     sudo networksetup -setsecurewebproxystate 'USB Ethernet' off
     sudo networksetup -setwebproxystate Wi-Fi off
     sudo networksetup -setsecurewebproxystate Wi-Fi off
-    echo 'Close Susccess'
+    echo 'Close Success'
+    ;;
+    31) echo "Close USB Ethernet IPV4"
+    sudo networksetup -setv4off "USB Ethernet"
+    echo 'Close Success'
     ;;
     *)  echo '输入不正确'
     ;;
