@@ -417,13 +417,18 @@ function openDesktopRecordFolder() {
 }
 
 function createFramework() {
-    echo input framework 1
+    echo input framework 1 eg. x.framework
     read f1
-    echo input framework 2
+    echo input framework 2 eg. x.framework
     read f2
-    echo input out framework
+    echo input out framework name eg. x
+    path1="/Users/eport2/Documents/"
     read f3
-    cmd=$(lipo -create ${f1} ${f2} -output ${f3}) 
+    cmd=$(lipo -create ${f1}/${f3} ${f2}/${f3} -output ${path1}${f3})
+    cmd=$(cp "${path1}${f3}" "${f1}") 
+    cmd=$(cp "${path1}${f3}" "${f2}") 
+    echo "已覆盖真机与模拟器的源文件"
+
 }
 
 function setGitConfigInfo() {
