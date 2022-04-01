@@ -481,6 +481,36 @@ function stopMySql(){
     echo $cmd1
 }
 
+function resignFramework(){
+    echo 'input dir'
+    read dir
+    cmd1=$(/usr/bin/security find-identity -v -p codesigning)
+    echo $cmd1
+    echo 'input cert'
+    read cert
+    for file in ${dir}/*
+do
+    FILE=$file
+    if test -f $file
+    then
+        echo $file 是文件
+        codesign -fs "${cert}" $file
+    else
+        echo $file 是目录
+        echo "${FILE##*.}"
+        ex="${FILE##*.}"
+        if [[ $ex == "framework" ]]; then
+            echo "FILE"
+            codesign -fs "${cert}" $file
+        fi
+        if [[ $ex == "dylib" ]]; then
+            echo "FILE"
+            codesign -fs "${cert}" $file
+        fi
+    fi
+done
+}
+
 echo 'choose ur way'
 echo '1: Create MVVM Files With OC'
 echo '2: Create Class File With OC'
@@ -497,6 +527,7 @@ echo '12: Start Mysql (u:root p:root)'
 echo '13: Stop Mysql'
 echo '14: Open Device Folder'
 echo '15: Create Framework'
+echo '16: Resign Framework for Dir'
 read index
 
 case $index in
@@ -544,5 +575,8 @@ case $index in
     ;;
     15)
     createFramework
+    ;;
+    16)
+    resignFramework
     ;;
 esac
