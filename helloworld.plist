@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">  
+<plist version="1.0">  
+  <dict>
+    <!-- 名称，要全局唯一 -->
+    <!-- launchctl load /Users/eport/Library/LaunchAgents/helloworld.plist -->
+    <key>Label</key>
+    <string>helloworld</string>
+
+    <!-- 要运行的程序， 如果省略这个选项，会把ProgramArguments的第一个
+    元素作为要运行的程序 -->
+    <!-- <key>Program</key>
+    <string>/Users/eport/downloads/helloworld.sh</string> -->
+
+    <!-- 命令， 第一个为命令，其它为参数-->
+    <key>ProgramArguments</key>
+    <array>
+      <string>/Users/eport/downloads/helloworld.sh</string>
+      <!-- <string></string> -->
+    </array>
+
+    <!-- 运行时间 -->
+    <key>StartCalendarInterval</key>
+    <dict>
+
+      <key>Minute</key>
+      <integer>58</integer>
+
+      <key>Hour</key>
+      <integer>13</integer>
+
+      <key>Day</key>
+      <integer>9</integer>
+
+      <key>Month</key>
+      <integer>2</integer>
+
+      <!-- 0和7都指星期天 -->
+      <!-- <key>Weekday</key>
+      <integer>4</integer> -->
+
+    </dict>
+
+    <!-- 运行间隔，与StartCalenderInterval使用其一，单位为秒 -->
+    <!-- <key>StartInterval</key>
+    <integer>0</integer> -->
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <!-- <key>KeepAlive</key>
+    <true/> -->
+
+    <!-- 标准输入文件 -->
+    <key>StandardInPath</key>
+    <string>/Users/eport/downloads/run-in.log</string>
+
+    <!-- 标准输出文件 -->
+    <key>StandardOutPath</key>
+    <string>/Users/eport/downloads/run-out.log</string>
+
+    <!-- 标准错误输出文件 -->
+    <key>StandardErrorPath</key>
+    <string>/Users/eport/downloads/run-err.log</string>
+
+  </dict>  
+</plist>
