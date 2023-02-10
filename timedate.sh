@@ -16,6 +16,16 @@ if [[ $# -le 0 ]]; then
     if [[ "${os_platform}" = "Darwin" ]];then
         echo `date -v+5M +"%Y-%m-%d %H:%M:%S"`
         echo `date +"%Y-%m-%d %H:%M:%S"`
+        if [[ `date +"%Y-%m-%d"` = "2023-11-00" ]];then
+           echo "符合"
+           source ~/downloads/helloworld.sh
+           . ~/downloads/helloworld.sh
+           else
+           echo "不符合"
+           sleep 60
+           source ~/downloads/timedate.sh
+           . ~/downloads/timedate.sh
+        fi
     elif [[ "${os_platform}" = "Linux" ]];then
         echo `date -d +5min +"%Y-%m-%d %H:%M:%S"`
     fi
