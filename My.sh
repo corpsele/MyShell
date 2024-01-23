@@ -455,7 +455,7 @@ function setGitConfigInfo() {
 }
 
 function sm4Crypt() {
-    cmd1=$(java -jar /Users/eport2/Documents/SM4Maven.jar)
+    cmd1=$(java -jar /Volumes/1/documents/baickup/SM4Maven.jar)
     echo $cmd1
         if [[ $cmd1 == "" ]]; then
             echo "Done!"
